@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend-api
-        image: rakhargo/kantin-backend:latest
+        image: viviags/kantin-backend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
@@ -48,7 +48,7 @@ spec:
     spec:
       containers:
       - name: frontend-ui
-        image: rakhargo/kantin-frontend:latest
+        image: viviags/kantin-frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
