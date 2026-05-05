@@ -3,11 +3,11 @@ pipeline {
 
     environment {
         // Ganti dengan username Docker Hub yang sesuai
-        DOCKER_HUB_USER = 'rakhargo' 
+        DOCKER_HUB_USER = 'viviags' 
         // ID kredensial yang dibuat di 'Add Credentials' tadi
         DOCKER_HUB_ID   = 'dockerhub-login'
         // URL repo GitHub aplikasi
-        GIT_REPO_URL    = 'https://github.com/rakhargo/kantin-app.git'
+        GIT_REPO_URL    = 'https://github.com/viviags/kantin-app.git'
     }
 
     stages {
