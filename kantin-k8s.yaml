@@ -15,9 +15,21 @@ spec:
       containers:
       - name: backend-api
         image: viviags/kantin-backend:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5000
+        # --- TAMBAHAN MODUL 2 ---
+        resources:
+          limits:
+            memory: "256Mi" # Batas maksimal RAM
+            cpu: "500m"     # Batas maksimal CPU (0.5 core)
+        livenessProbe:      # Mengecek apakah aplikasi hang
+          httpGet:
+            path: /api/info
+            port: 5000
+          initialDelaySeconds: 10
+          periodSeconds: 15
+        readinessProbe:     # Mengecek apakah aplikasi siap terima traffic
+          httpGet:
+            path: /api/info
+            port: 5000
 ---
 apiVersion: v1
 kind: Service
@@ -30,7 +42,7 @@ spec:
     - protocol: TCP
       port: 5000
       targetPort: 5000
-  type: ClusterIP
+  type: LoadBalancer
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -64,4 +76,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-  type: ClusterIP
+  type: LoadBalancer
